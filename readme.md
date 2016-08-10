@@ -18,7 +18,9 @@ The purpose of this application is demonstrate how to validate request JSON agai
 Let's say you are creating a new user.
 
 API: http://localhost:8000/v1/register
+
 HTTP Method: POST
+
 Headers: Content-Type:application/json
 
 
