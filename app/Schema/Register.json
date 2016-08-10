@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },
+    "first_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "last_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "password": {
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phone": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "username",
+    "first_name",
+    "last_name",
+    "password",
+    "email",
+    "phone"
+  ]
+}

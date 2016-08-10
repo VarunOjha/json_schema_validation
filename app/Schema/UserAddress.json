@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "integer",
+      "multipleOf": 1,
+      "maximum": 10000,
+      "minimum": 1,
+      "exclusiveMaximum": false,
+      "exclusiveMinimum": false
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "streetAddress": {
+          "type": "string",
+          "minLength": 1
+        },
+        "city": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "streetAddress",
+        "city"
+      ]
+    },
+    "phoneNumber": {
+      "type": "array",
+      "uniqueItems": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "minLength": 1
+          },
+          "code": {
+            "type": "integer",
+            "multipleOf": 1,
+            "maximum": 10000,
+            "minimum": 1,
+            "exclusiveMaximum": false,
+            "exclusiveMinimum": false
+          }
+        },
+        "required": [
+          "location",
+          "code"
+        ]
+      }
+    }
+  },
+  "required": [
+    "user_id",
+    "address",
+    "phoneNumber"
+  ]
+}

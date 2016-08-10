@@ -1,0 +1,13 @@
+{
+  "user_id": 2,
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "New York"
+  },
+  "phoneNumber": [
+    {
+      "location": "home",
+      "code": 44
+    }
+  ]
+}
