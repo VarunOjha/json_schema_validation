@@ -38,7 +38,7 @@ class JSONSchemaCheck
         $data      = json_decode(json_encode($json_array));
         
         $refResolver = new \JsonSchema\RefResolver($retriever);
-        $refResolver->resolve($schema, 'file://' . __DIR__);
+        $refResolver->resolve($schema_model, 'file://' . __DIR__);
         
         // Validate
         $validator = new JsonSchema\Validator();

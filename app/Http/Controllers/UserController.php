@@ -15,13 +15,13 @@ class UserController extends Controller
     {
         $result = $request->getContent();
         if (isJson($result) == FALSE) {
-            $result = errorResponse("INVALID_JSON");
+            $result["error"]["code"] = "INVALID_JSON";
             return response()->json($result,422,[],JSON_NUMERIC_CHECK);  
         }
         
         $schemaCheck = JSONValidator::validate_json($result,'Register');
         if ($schemaCheck["status"] == 0) {
-            $res                     = errorResponse("INVALID_JSON_SCHEMA");
+            $res["error"]["code"]                     = "INVALID_JSON_SCHEMA";
             $res["error"]["details"] = $schemaCheck;
             return response()->json($res,422,[],JSON_NUMERIC_CHECK); 
         }
