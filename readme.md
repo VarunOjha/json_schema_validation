@@ -8,3 +8,4 @@
 
 Example aimed at showing how you can Schema validate the request JSON.
 
+Online tool to generate JSON Schema from a sample JSON (JSON Stubs) : http://jsonschema.net/
