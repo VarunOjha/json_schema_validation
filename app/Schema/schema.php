@@ -1,24 +1,12 @@
 <?php
 
 trait Schema {
-    private static $schema_model_array = array('Patient' => 'Patient.json',
-                                             'Practitioner' => 'Practitioner.json',
-                                             'Location' => 'Location.json',
-                                             'Organization' => 'Organization.json',
-                                             'Observation' => 'Observation.json',
-                                             'DocumentReference' => 'DocumentReference.json',
-                                             'ValueSet' => 'ValueSet.json',
-                                             'Immunization' => 'Immunization.json',
-                                             'CarePlan' => 'CarePlan.json',
-                                             'Schedule' => 'Schedule.json',
-                                             'Appointment' => 'Appointment.json',
-                                             'Bundle' => 'Bundle.json',
-                                             'Login' => 'Login.json',
-                                             'Register' => 'Register.json'
+    private static $schema_model_array = array('Register' => 'Register.json',
+                                             'Address' => 'UserAddress.json'
                                                 );
     public static function getSchemaName($schema_name)
     {
-        return $schemaName != NULL ? self::$schema_model_array[$schema_name] : NULL ;
+        return $schema_name != NULL ? self::$schema_model_array[$schema_name] : NULL ;
     }
 }
 

@@ -4,7 +4,7 @@ namespace App\Utilities;
 use Schema;
 use JsonSchema;
 
-class JSONSchemaValidator
+class JSONSchemaCheck
 {
     
     /* Wrapper function for JSON Schema Check 
@@ -23,7 +23,7 @@ class JSONSchemaValidator
     {
         $check           = [];
         $check["status"] = 1;
-        $check           = self::check_schema(json_decode($requestJSON, true), $status, $schema);
+        $check           = self::check_schema(json_decode($requestJSON, true), $check, $schema);
         return $check;
     }
     

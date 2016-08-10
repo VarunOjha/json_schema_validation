@@ -19,7 +19,7 @@ class UserController extends Controller
             return response()->json($result,422,[],JSON_NUMERIC_CHECK);  
         }
         
-        $schemaCheck = JSONValidator::jsonSchemaValidate($result,'Register');
+        $schemaCheck = JSONValidator::validate_json($result,'Register');
         if ($schemaCheck["status"] == 0) {
             $res                     = errorResponse("INVALID_JSON_SCHEMA");
             $res["error"]["details"] = $schemaCheck;
