@@ -1,11 +1,5 @@
 # Laravel 5.2 JSON Schema Validator example
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
-
 JSON Schema Validation
 
 HTTP Post ? You wish take a JSON as a web request and process it.
@@ -135,6 +129,44 @@ JSON Schema for Register(app/Schema/Register.json):
   ]
 }
 ```
+
+The Utility class written over justinrainbow's json-schema is present in app/Utilities directory.
+
+This class assumes that all JSON Schemas used by the system is stored in the Schema directory. (app/Schema). So whenever you have to define a new JSON Schema, save the JSON Schema file in the app/Schema Directory.
+
+Each JSON Schema file is referenced using an alias. This alias is defined in the app/Schema/schema.php file.
+
+Example,
+
+```
+trait Schema {
+    private static $schema_model_array = array('Register' => 'Register.json',
+                                             'Address' => 'UserAddress.json'
+                                                );
+    public static function getSchemaName($schema_name)
+    {
+        return $schema_name != NULL ? self::$schema_model_array[$schema_name] : NULL ;
+    }
+}
+```
+
+This trait as a dictionary for JSON Schema, allowing the the JSON Schema to be called anywhere within the Laravel app.
+
+Also, the file app/Schema/schema.php, is made globally available in Laravel through composer.json
+```
+"autoload": {
+    "classmap": [
+      "database"
+    ],
+    "psr-4": {
+      "App\\": "app/"
+    },
+    "files": [
+      "app/Schema/schema.php"
+    ]
+  }
+```
+(Adding the schema file within the autoload)
 
 
 Online tool to generate JSON Schema from a sample JSON (JSON Stubs) : http://jsonschema.net/
