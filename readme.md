@@ -23,7 +23,7 @@ HTTP Method: POST
 Headers: Content-Type:application/json
 ```
 
-Now, fields such as username,password,email,phone are required. Otherwise, a user cannot be created. 
+Now, fields such as ***username,password,email,phone,password** are required. Otherwise, a user cannot be created. 
 
 Let's say you send the JSON below in the HTTP request. Clearly, some fields are missing.
 Request JSON :
@@ -66,6 +66,8 @@ Desirable HTTP response for this request is:
 ```
 
 Alongwith a HTTP status code 422. 
+---
+Implementation
 
 
 Online tool to generate JSON Schema from a sample JSON (JSON Stubs) : http://jsonschema.net/
