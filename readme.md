@@ -23,7 +23,7 @@ HTTP Method: POST
 Headers: Content-Type:application/json
 ```
 
-Now, fields such as ***username,password,email,phone,password** are required. Otherwise, a user cannot be created. 
+Now, fields such as **username,password,email,phone,password** are required. Otherwise, a user cannot be created. 
 
 Let's say you send the JSON below in the HTTP request. Clearly, some fields are missing.
 Request JSON :
@@ -68,6 +68,32 @@ Alongwith a HTTP status code 422.
 
 ---
 Implementation
+Validate the request JSON at the controller level. Check app/Http/Controllers/UserController.php
+
+```
+	// Registering a user
+    public function register(Request $request)
+    {
+        // Extract the JSON from the HTTP request
+        $result = $request->getContent();
+
+        if (isJson($result) == FALSE) {
+            $result["error"]["code"] = "INVALID_JSON";
+            return response()->json($result,422,[],JSON_NUMERIC_CHECK);  
+        }
+        // 'Register' is an alias to the JSON Schema for register
+        
+        $schemaCheck = JSONValidator::validate_json($result,'Register');
+        if ($schemaCheck["status"] == 0) {
+            $res["error"]["code"]                     = "INVALID_JSON_SCHEMA";
+            $res["error"]["details"] = $schemaCheck;
+            return response()->json($res,422,[],JSON_NUMERIC_CHECK); 
+        }
+        return response()->json($result,201,[],JSON_NUMERIC_CHECK);
+    }
+
+```
+
 
 
 Online tool to generate JSON Schema from a sample JSON (JSON Stubs) : http://jsonschema.net/
