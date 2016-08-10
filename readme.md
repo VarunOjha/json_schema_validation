@@ -34,5 +34,37 @@ Request JSON :
 }
 ```
 
+Since, the required fields phone,email are missing, obviously the JSON cannot be processed.
+
+Desirable HTTP response for this request is:
+
+```javascript
+{
+  "error": {
+    "code": "INVALID_JSON_SCHEMA",
+    "details": {
+      "status": 0,
+      "Register_SCHEMA": [
+        {
+          "field": "password",
+          "issue": "The property password is required"
+        },
+        {
+          "field": "email",
+          "issue": "The property email is required"
+        },
+        {
+          "field": "phone",
+          "issue": "The property phone is required"
+        }
+      ],
+      "Register_VALID": 0
+    }
+  }
+}
+```
+
+Alongwith a HTTP status code 422. 
+
 
 Online tool to generate JSON Schema from a sample JSON (JSON Stubs) : http://jsonschema.net/
