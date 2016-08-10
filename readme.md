@@ -20,8 +20,18 @@ Let's say you are creating a new user.
 API: http://localhost:8000/v1/register
 
 HTTP Method: POST
-
 Headers: Content-Type:application/json
+
+Now, fields such as username,password,email,phone are required. Otherwise, a user cannot be created. 
+
+Let's say you send the JSON below in the HTTP request. Clearly, some fields are missing.
+Request JSON :
+
+{
+  "username": "varun_ojha32",
+  "first_name": "Varun",
+  "last_name": "Ojha"
+}
 
 
 
