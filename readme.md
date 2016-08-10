@@ -26,13 +26,13 @@ Now, fields such as username,password,email,phone are required. Otherwise, a use
 
 Let's say you send the JSON below in the HTTP request. Clearly, some fields are missing.
 Request JSON :
-
+```javascript
 {
   "username": "varun_ojha32",
   "first_name": "Varun",
   "last_name": "Ojha"
 }
-
+```
 
 
 Online tool to generate JSON Schema from a sample JSON (JSON Stubs) : http://jsonschema.net/
