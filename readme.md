@@ -82,7 +82,7 @@ Validate the request JSON at the controller level. Check app/Http/Controllers/Us
             return response()->json($result,422,[],JSON_NUMERIC_CHECK);  
         }
         // 'Register' is an alias to the JSON Schema for register
-        
+
         $schemaCheck = JSONValidator::validate_json($result,'Register');
         if ($schemaCheck["status"] == 0) {
             $res["error"]["code"]                     = "INVALID_JSON_SCHEMA";
@@ -93,7 +93,48 @@ Validate the request JSON at the controller level. Check app/Http/Controllers/Us
     }
 
 ```
+The corresponding JSON Schema is stored in a 'Schema' folder. 
 
+JSON Schema for Register(app/Schema/Register.json):
+
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },
+    "first_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "last_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "password": {
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phone": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "username",
+    "password",
+    "email",
+    "phone"
+  ]
+}
+```
 
 
 Online tool to generate JSON Schema from a sample JSON (JSON Stubs) : http://jsonschema.net/
