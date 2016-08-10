@@ -13,8 +13,13 @@ However, before you proceed to database inserts/updates you must make sure that 
 
 Instead of writing nested if-else statements, which check for which field is present or not in the request JSON, you should use JSON Schema Validation.
 
-The purpose of this application is demonstrate how to validate incoming request JSON against a decided JSON Schema. To achieve, I have writting a Utility Class over justinrainbow package in Laravel 5.2
+The purpose of this application is demonstrate how to validate request JSON against a JSON Schema. To achieve, I have written a Utility Class over justinrainbow jsonschema package in Laravel 5.2
 
+Let's say you are creating a new user.
+
+API: http://localhost:8000/v1/register
+HTTP Method: POST
+Headers: Content-Type:application/json
 
 
 
